@@ -1,0 +1,104 @@
+/* trackk2save.com — minimal styles. Mobile-first, dark theme, no framework. */
+
+:root {
+  --bg: #0A0E14;
+  --surface: #0F141C;
+  --surface-2: #161C26;
+  --text: #E8ECF2;
+  --text-2: #9AA3B2;
+  --text-3: #5C6675;
+  --primary: #3B82F6;
+  --border: rgba(255,255,255,0.08);
+  --radius: 12px;
+  --max: 960px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 24px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.nav .brand { font-weight: 800; font-size: 20px; color: var(--text); letter-spacing: -0.3px; }
+.nav nav a { margin-left: 18px; color: var(--text-2); font-weight: 500; font-size: 14px; }
+
+main { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+.hero { padding: 60px 0 40px; text-align: center; }
+.hero h1 { font-size: 40px; line-height: 1.15; margin: 0 0 18px; letter-spacing: -0.8px; font-weight: 800; }
+.hero .lead { font-size: 18px; color: var(--text-2); max-width: 640px; margin: 0 auto 14px; }
+.hero .note { font-size: 13px; color: var(--text-3); }
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 40px 0;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.card h3 { margin: 0 0 8px; font-size: 16px; }
+.card p { margin: 0; color: var(--text-2); font-size: 14px; }
+
+.cta { text-align: center; padding: 56px 0 80px; }
+.cta h2 { font-size: 28px; margin: 0 0 10px; letter-spacing: -0.4px; }
+.cta p { color: var(--text-2); margin: 0 0 24px; }
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.btn:hover { opacity: .92; text-decoration: none; }
+
+footer {
+  text-align: center;
+  padding: 28px 16px 40px;
+  font-size: 13px;
+  color: var(--text-3);
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
+}
+footer p { margin: 6px 0; }
+footer a { color: var(--text-2); }
+
+/* Long-form pages (privacy / terms / delete-account). */
+.doc { max-width: 740px; padding: 36px 24px 96px; }
+.doc h1 { font-size: 32px; letter-spacing: -0.5px; }
+.doc h2 { margin-top: 36px; font-size: 22px; letter-spacing: -0.3px; }
+.doc h3 { margin-top: 24px; font-size: 17px; }
+.doc p, .doc li { color: var(--text); }
+.doc table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+.doc th, .doc td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+.doc th { background: var(--surface-2); }
+.doc blockquote { border-left: 3px solid var(--primary); margin: 16px 0; padding: 4px 16px; color: var(--text-2); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; }
+.doc code { background: var(--surface-2); padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+.doc hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+.doc-meta { color: var(--text-3); font-size: 14px; margin-bottom: 24px; }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; }
+  .hero .lead { font-size: 16px; }
+  .nav nav a { margin-left: 12px; }
+}
