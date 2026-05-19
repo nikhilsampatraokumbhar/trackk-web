@@ -20,7 +20,65 @@ If you do not agree, do not use the Service.
 
 ---
 
-## 1. What Trackk Is — and What It Is Not
+## Contents
+
+1. [Definitions](#1-definitions)
+2. [What Trackk Is — and What It Is Not](#2-what-trackk-is--and-what-it-is-not)
+3. [Eligibility](#3-eligibility)
+4. [Your Account](#4-your-account)
+5. [Device Permissions and Data You Allow Trackk to Read](#5-device-permissions-and-data-you-allow-trackk-to-read)
+6. [Your Content](#6-your-content)
+7. [Group Features](#7-group-features)
+8. [Premium and Paid Features](#8-premium-and-paid-features)
+9. [Acceptable Use](#9-acceptable-use)
+10. [Third-Party Services](#10-third-party-services)
+11. [Intermediary Status (IT Act, 2000)](#11-intermediary-status-it-act-2000)
+12. [Disclaimers](#12-disclaimers)
+13. [Limitation of Liability](#13-limitation-of-liability)
+14. [Indemnification](#14-indemnification)
+15. [Suspension and Termination](#15-suspension-and-termination)
+16. [Force Majeure](#16-force-majeure)
+17. [Changes to the Service and to These Terms](#17-changes-to-the-service-and-to-these-terms)
+18. [Governing Law and Dispute Resolution](#18-governing-law-and-dispute-resolution)
+19. [App Store Specific Terms (iOS, when available)](#19-app-store-specific-terms-ios-when-available)
+20. [Miscellaneous](#20-miscellaneous)
+21. [Contact](#21-contact)
+
+---
+
+## 1. Definitions
+
+In these Terms, the following capitalised words have the meanings
+set out below. Other capitalised terms are defined where they
+first appear.
+
+- **"Trackk"**, **"Service"** — the Trackk mobile application
+  (Android and, when launched, iOS), the related website
+  `trackk2save.com`, the supporting Firebase Cloud Functions, and
+  any related services we provide.
+- **"we"**, **"our"**, **"us"** — Trackk Technologies, a sole
+  proprietorship of Ms. Vandana S, registered in India.
+- **"you"**, **"User"** — the individual who has accepted these
+  Terms and accessed the Service.
+- **"Account"** — your Trackk user record, identified by a
+  Firebase Authentication user ID and linked to your sign-in
+  method (Google, Apple, email + password, or phone OTP).
+- **"Your Content"** — has the meaning given in Section 6.
+- **"Group"** — a shared expense container created or joined by
+  you, in which you have invited or accepted other Users.
+- **"Premium"** — a paid plan, when offered, that unlocks
+  Premium-only features. Premium is not enabled in v1.0; all
+  features are available free.
+- **"Personal Data"** — has the meaning given in the
+  [Privacy Policy](./PRIVACY_POLICY.md).
+- **"DPDPA"** — the Digital Personal Data Protection Act, 2023
+  (India).
+- **"IT Act"** — the Information Technology Act, 2000 (India), as
+  amended.
+
+---
+
+## 2. What Trackk Is — and What It Is Not
 
 Trackk is a **personal expense-tracking and group-expense-splitting tool**.
 You can use it to:
@@ -53,7 +111,7 @@ advice. **You are solely responsible for your financial decisions.**
 
 ---
 
-## 2. Eligibility
+## 3. Eligibility
 
 You may use Trackk only if:
 
@@ -68,7 +126,7 @@ that you have authority to bind that organisation to these Terms.
 
 ---
 
-## 3. Your Account
+## 4. Your Account
 
 To use most features you must create an account using a supported sign-in
 method (e.g. Google Sign-In, phone number with OTP).
@@ -87,7 +145,7 @@ law, or if your conduct creates risk for us or other users.
 
 ---
 
-## 4. Device Permissions and Data You Allow Trackk to Read
+## 5. Device Permissions and Data You Allow Trackk to Read
 
 To deliver core features, Trackk asks you to grant certain device
 permissions. These permissions are entirely optional; you can revoke
@@ -99,8 +157,9 @@ to function with reduced automation.
   bank, card, UPI, and lender identifiers in order to extract the
   amount, merchant, and timestamp. **Parsing happens on your device.**
   We do not transmit your raw SMS content to our servers. Only the
-  parsed transaction fields, and only if you have enabled cloud sync,
-  may be uploaded to our cloud database. We do not read, store, or
+  parsed transaction fields (amount, merchant, timestamp) are
+  uploaded to your private space in our cloud database to enable
+  multi-device sync and protect against data loss. We do not read, store, or
   process personal SMS, OTPs (other than discarding them), promotional
   messages, or any content unrelated to financial transactions.
 - **Contacts (Android).** With your explicit consent, when you tap
@@ -137,7 +196,7 @@ You acknowledge and agree that:
 
 ---
 
-## 5. Your Content
+## 6. Your Content
 
 "**Your Content**" means transactions, notes, group memberships, group
 expenses, settlements, comments, goals, budgets, custom categories, and
@@ -148,7 +207,7 @@ non-exclusive, royalty-free, worldwide licence** to host, store, copy,
 display, transmit, and process Your Content **solely** to:
 
 - provide and improve the Service;
-- enable cloud sync between your devices, where you have enabled it;
+- sync your data across your devices via your private cloud space;
 - share Your Content with members of groups you have voluntarily joined,
   to the extent necessary for the group features to work.
 
@@ -167,7 +226,7 @@ You represent and warrant that:
 
 ---
 
-## 6. Group Features
+## 7. Group Features
 
 When you join or create a group, transactions, splits, comments, member
 display names, and balances within that group are shared with the other
@@ -182,7 +241,7 @@ settlements actually take place.
 
 ---
 
-## 7. Premium and Paid Features
+## 8. Premium and Paid Features
 
 If we offer paid plans:
 
@@ -214,7 +273,7 @@ for Razorpay-processed plans.
 
 ---
 
-## 8. Acceptable Use
+## 9. Acceptable Use
 
 You agree not to:
 
@@ -236,11 +295,11 @@ You agree not to:
 
 ---
 
-## 9. Third-Party Services
+## 10. Third-Party Services
 
 The Service relies on third-party providers including, without
-limitation, **Google Firebase** (authentication, Firestore, FCM, Cloud
-Functions, Crashlytics), **Razorpay** (payment processing on
+limitation, **Google Firebase** (authentication, Firestore, FCM,
+Cloud Functions), **Razorpay** (payment processing on
 Android), **Google Play Billing**, **Apple In-App Purchase**, the
 **Gmail / Microsoft Graph / Yahoo Mail APIs** (for the optional
 planned email-scanning feature), and exchange-rate APIs. Where you
@@ -250,7 +309,35 @@ policies. We are not responsible for their acts or omissions.
 
 ---
 
-## 10. Disclaimers
+## 11. Intermediary Status (IT Act, 2000)
+
+For all User-generated content on the Service — including (without
+limitation) group names, group photos, expense descriptions, notes,
+comments, member display names, support submissions, and feedback —
+Trackk operates as an **intermediary** within the meaning of
+Section 2(1)(w) of the Information Technology Act, 2000 (India)
+and as defined under the Information Technology (Intermediary
+Guidelines and Digital Media Ethics Code) Rules, 2021.
+
+We do not pre-screen User-generated content and are not responsible
+for any third-party content uploaded, posted, or transmitted via
+the Service. We will, however, act on lawful takedown notices in
+accordance with Rule 3(2) of the 2021 Rules. To report content you
+believe violates the law or these Terms, email
+`support@trackk2save.com` with the subject **"Content takedown
+request"** including: (a) a clear description of the content; (b)
+the legal basis for removal; (c) your contact information and a
+good-faith affirmation of accuracy. We will acknowledge within
+**24 hours** and respond on the merits within **72 hours**, in
+line with the timelines under the 2021 Rules.
+
+Our safe-harbour protection under Section 79 of the IT Act is
+preserved by our compliance with these Rules and by the limitations
+on User conduct in §9 above.
+
+---
+
+## 12. Disclaimers
 
 THE SERVICE IS PROVIDED **"AS IS" AND "AS AVAILABLE"** WITHOUT
 WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
@@ -275,7 +362,7 @@ records.
 
 ---
 
-## 11. Limitation of Liability
+## 13. Limitation of Liability
 
 TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW:
 
@@ -313,7 +400,7 @@ excludes liability that cannot be lawfully excluded.
 
 ---
 
-## 12. Indemnification
+## 14. Indemnification
 
 You agree to defend, indemnify, and hold harmless Trackk Technologies, a sole proprietorship of Ms. Vandana S,
 its officers, directors, employees, agents, and contractors from and
@@ -328,7 +415,7 @@ against any claim, demand, loss, liability, damage, or expense
 
 ---
 
-## 13. Suspension and Termination
+## 15. Suspension and Termination
 
 You may stop using the Service and delete your account at any time from
 the in-app **Delete Account** option in your profile. Deletion is
@@ -344,19 +431,46 @@ governing law, and dispute resolution) will survive.
 
 ---
 
-## 14. Changes to the Service and to These Terms
+## 16. Force Majeure
 
-We may modify, add, suspend, or discontinue features at any time. We may
-also update these Terms; the **Last updated** date at the top will be
-revised and, where the change is material, we will notify you in-app or
-by email before it takes effect. Your continued use of the Service after
-a change takes effect constitutes acceptance of the revised Terms. If
-you do not agree, your only remedy is to stop using the Service and
-delete your account.
+Neither party will be liable for any failure or delay in performing
+its obligations under these Terms to the extent that such failure
+or delay results from causes beyond its reasonable control,
+including (without limitation): acts of God; natural disasters;
+fire; flood; earthquake; pandemic, epidemic, or public-health
+emergency; war, terrorism, riot, or civil disorder; action of
+government, regulator, or court; nationwide labour stoppage or
+industrial dispute; failure or unavailability of the public
+internet, electricity grid, telecommunications networks, or
+third-party hosting infrastructure (including Google Cloud /
+Firebase); cyberattack, including denial-of-service attacks, not
+caused by the affected party's negligence; and any other event
+that the affected party could not reasonably have foreseen or
+prevented. The affected party will use reasonable efforts to
+mitigate the impact and resume performance as soon as practicable.
 
 ---
 
-## 15. Governing Law and Dispute Resolution
+## 17. Changes to the Service and to These Terms
+
+We may modify, add, suspend, or discontinue features at any time. We
+may also update these Terms; the **Last updated** date at the top
+will be revised. Where a change is **material** — including any
+change to fees, refund terms, dispute resolution, governing law, or
+your privacy rights — we will give you **at least fourteen (14)
+calendar days' prior notice** via an in-app banner, push
+notification, or email before the revised Terms take effect.
+**Non-material** changes (typos, clarifying language, restructuring,
+or third-party-provider substitutions of equivalent function) may
+take effect immediately on publication. Your continued use of the
+Service after the effective date constitutes acceptance of the
+revised Terms. If you do not agree, your only remedy is to stop
+using the Service and delete your account before the effective
+date.
+
+---
+
+## 18. Governing Law and Dispute Resolution
 
 These Terms are governed by the laws of **India**,
 without regard to its conflict-of-laws rules.
@@ -378,7 +492,7 @@ class, collective, or representative proceeding against us.
 
 ---
 
-## 16. App Store Specific Terms (iOS, when available)
+## 19. App Store Specific Terms (iOS, when available)
 
 The following terms apply when you obtain the Service from the
 Apple App Store, in addition to (and where inconsistent, in
@@ -413,7 +527,7 @@ substitution for) the rest of these Terms:
 
 ---
 
-## 17. Miscellaneous
+## 20. Miscellaneous
 
 - **Entire agreement.** These Terms together with the Privacy Policy
   constitute the entire agreement between you and us regarding the
@@ -430,7 +544,7 @@ substitution for) the rest of these Terms:
 
 ---
 
-## 18. Contact
+## 21. Contact
 
 For questions, concerns, or notices under these Terms:
 

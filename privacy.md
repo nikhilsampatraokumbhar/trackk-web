@@ -21,6 +21,28 @@ acknowledge the practices described here.
 
 ---
 
+## Contents
+
+1. [A One-Page Summary](#1-a-one-page-summary)
+2. [Information We Collect](#2-information-we-collect)
+3. [How We Use Your Information](#3-how-we-use-your-information)
+4. [Legal Bases for Processing](#4-legal-bases-for-processing)
+5. [How We Share Your Information](#5-how-we-share-your-information)
+6. [Where Your Data Is Stored](#6-where-your-data-is-stored)
+7. [How Long We Keep Your Data](#7-how-long-we-keep-your-data)
+8. [How We Protect Your Data](#8-how-we-protect-your-data)
+9. [Your Rights and Choices](#9-your-rights-and-choices)
+10. [Children](#10-children)
+11. [Cookies and Similar Technologies](#11-cookies-and-similar-technologies)
+12. [India-Specific Disclosures (DPDPA, 2023)](#12-india-specific-disclosures-dpdpa-2023)
+13. [Region-Specific Rights](#13-region-specific-rights)
+14. [Permissions Disclosure (Play Store / App Store)](#14-permissions-disclosure-play-store--app-store)
+14A. [Apple-Specific Disclosures (iOS, when available)](#14a-apple-specific-disclosures-ios-when-available)
+15. [Changes to This Policy](#15-changes-to-this-policy)
+16. [Contact Us](#16-contact-us)
+
+---
+
 ## 1. A One-Page Summary
 
 We've also written this out in plain English at the top so you don't
@@ -31,8 +53,8 @@ have to dig:
 - **SMS stays on your device.** When you enable SMS detection (Android
   only), parsing happens locally. We do **not** upload your raw SMS,
   OTPs, or unrelated messages to our servers. Only the parsed
-  transaction fields are saved, and only to your own private cloud
-  storage if you've turned on cloud sync.
+  transaction fields (amount, merchant, timestamp) are saved to your
+  own private cloud space, accessible only to you.
 - **We don't sell your data. Ever.** Not to advertisers, not to data
   brokers, not to any third party.
 - **We don't have access to your bank.** We never ask for and never
@@ -48,22 +70,47 @@ The rest of this document is the formal version.
 
 ### 2.1 Information you provide
 
-- **Account information** — name, profile photo (if any), email address,
-  and/or phone number, depending on which sign-in method you choose
-  (Google Sign-In or phone OTP).
+- **Account information** — name, profile photo (if any), email
+  address, phone number, age (optional), and password (only when you
+  choose email/password sign-in — stored hashed by Firebase
+  Authentication, never visible to us in clear text). The exact
+  fields collected depend on which sign-in method you choose:
+  Google Sign-In, Sign in with Apple (when iOS launches),
+  email + password, or phone number with OTP.
 - **Profile preferences** — display name, preferred currency, language,
   theme, default tracker, notification preferences.
-- **Transactions and financial records** — amount, merchant, description,
-  category, tags, notes, timestamp, payment-mode hints (UPI / Card /
-  Cash), receipts you choose to attach.
-- **Group data** — group name, member list (display name + phone /
-  email of each invited member), group expenses, splits, settlements,
-  comments. If you choose to **import a member from your device
-  contacts** (Android only — see §2.2), the name and phone number of
-  the contact you select are stored against that group.
-- **Goals and budgets** — target amounts, target dates, monthly budgets,
-  custom finance items (salary, EMIs, expenses, maintenance).
-- **Support correspondence** — messages and attachments you send to us.
+- **Personal financial records** stored against your account:
+  - **Transactions** — amount, merchant, description, category,
+    tags, notes, timestamp, payment-mode hints (UPI / Card /
+    Cash), receipt image URI you choose to attach.
+  - **Goals** — target amounts, target dates, savings progress,
+    streak counters, custom finance items (salary, monthly
+    expenses, EMIs, maintenance).
+  - **Budgets** — overall and per-category monthly budgets, alert
+    thresholds.
+  - **Subscriptions** — recurring services you track, their
+    amount, billing cycle, next-due date.
+  - **Investments** — instrument name, type, invested amount,
+    current value, notes.
+  - **EMIs** — loan name, principal, monthly amount, tenure,
+    interest rate, notes.
+  - **Reimbursement trips** — trip name, dates, associated
+    transactions, attached receipt image URIs.
+- **Group data** — group name, group photo (if you upload one),
+  member list (display name + phone / email of each invited
+  member), group expenses, splits, settlements, comments. If you
+  import a member via **"Add from contacts"** (Android, see §2.2),
+  the name, phone number, and contact photo of the entries you
+  select are saved against that group.
+- **Referral data** — when you sign up via someone else's referral
+  link, your account is linked to the referrer's ID so the referrer
+  can be credited with the reward. When you share your own link,
+  we record which accounts signed up via it (their UID, sign-up
+  date) for the same purpose.
+- **Support correspondence** — messages, screenshots, and any
+  attachments you send to us. When you submit feedback in-app, we
+  automatically attach your platform (iOS / Android), OS version,
+  app version, and device locale to help us debug.
 
 ### 2.2 Information generated by your device, with your permission
 
@@ -115,9 +162,27 @@ The rest of this document is the formal version.
   receives the data your Shortcut chooses to send. The Shortcut runs
   entirely on your device, under your control, and you can delete it
   at any time from the Shortcuts app.
+- **Camera (Android & iOS, optional).** Requested only when you
+  tap "Attach receipt" while editing a reimbursement-trip expense
+  and choose "Take photo." The captured image is stored as a local
+  file URI against the transaction. The image file itself is not
+  uploaded to our cloud — only the local URI is stored, so
+  receipts stay on the device that captured them.
+- **Photo library (Android & iOS, optional).** Requested when you
+  tap "Attach receipt" and choose "Choose from gallery," or when
+  you tap to set a group photo in Group Settings. We only see the
+  single image you select; the rest of your library is not
+  scanned or read. Like camera-captured receipts, the image file
+  stays on your device — only the local URI is stored.
 - **Push notifications (Android & iOS, optional).** Used to surface
-  detected transactions for your review. Notification text is generated
-  on-device.
+  detected transactions, debt-reminder nudges, and budget alerts.
+  Notification text is generated on-device for SMS-detected
+  transactions, and on-server for email-detected transactions
+  (when the planned email feature ships). Debt reminders use a
+  low-importance Android channel — no sound, no heads-up — and
+  are rate-limited to a maximum of two per day across all groups
+  and one per group per week, only between 10am and 8pm in your
+  local time zone.
 - **Approximate device and app information** — operating system
   version, app version, device model, language, time zone, crash logs,
   and high-level diagnostic events, used to keep the Service running
@@ -126,10 +191,33 @@ The rest of this document is the formal version.
 ### 2.3 Information collected automatically
 
 - **Sign-in identifiers** — Firebase Authentication user ID, sign-in
-  provider, last sign-in time, IP address recorded by Firebase for
-  authentication and abuse-prevention purposes.
+  provider (Google / Apple / email / phone), last sign-in time, and
+  IP address recorded by Firebase for authentication and
+  abuse-prevention purposes.
+- **Phone-OTP verification metadata.** When you sign in with a phone
+  number, Firebase Authentication records the phone number, the IP
+  address of the verification request, and the success / failure
+  outcome — including for failed attempts — for up to **30 days**
+  to prevent SMS-OTP abuse and brute-force attacks. This record is
+  kept by Google on Firebase's servers and is not visible to us
+  beyond the aggregate counters Firebase exposes in our console.
+- **Device tokens.** When you allow push notifications, your
+  device's Firebase Cloud Messaging (FCM) token is stored at
+  `/users/{your-uid}/devices/{token-id}` alongside the platform
+  (iOS / Android), the time the token was issued, and a refresh
+  timestamp. The token rotates automatically; tokens older than the
+  most recent registration on a given device are pruned. The token
+  cannot be used to identify your device outside Firebase.
+- **Activity counters.** A lifetime "active days" counter is
+  incremented at most once per calendar day when you open the app
+  while signed in. This is used to surface gentle streak metrics
+  in-app and to power the savings-goal carry-forward calculation.
 - **Sync metadata** — timestamps on records to enable conflict
-  resolution between devices when cloud sync is on.
+  resolution between devices.
+- **Activity logs.** Firebase Authentication and Cloud Functions
+  retain operational logs (sign-in timestamps, function invocations,
+  error traces) for up to 30 days for diagnostic and abuse-prevention
+  purposes.
 
 ### 2.4 What we **do not** collect
 
@@ -171,15 +259,38 @@ We **do not**:
 
 ---
 
-## 4. Legal Bases (for users in the EU/UK/EEA)
+## 4. Legal Bases for Processing
+
+### 4.1 Under India's Digital Personal Data Protection Act, 2023
+
+For users in India, we process personal data primarily on the basis of:
+
+- **Consent** — given by clear affirmative action when you tap
+  **Continue**, **Sign in with Google**, **Verify OTP**, or any
+  equivalent button at sign-in. You may withdraw consent at any
+  time via Profile → Delete Account or by emailing
+  `support@trackk2save.com`.
+- **Certain legitimate uses** (DPDPA § 7) — limited to: (a)
+  providing or making available a service that you have specifically
+  requested; (b) responding to a security incident affecting our
+  systems or your data; (c) compliance with any judgement, decree,
+  or order of a court or tribunal in India; (d) compliance with any
+  law in force in India; (e) prevention, detection, or investigation
+  of fraud relating to the Service.
+
+We do not currently qualify as a **Significant Data Fiduciary**
+under DPDPA § 10; if our classification changes, we will publish a
+notice in-app and update this Policy.
+
+### 4.2 Under the GDPR / UK GDPR (when applicable)
 
 Where the GDPR or UK GDPR applies, we rely on the following legal bases:
 
 - **Performance of a contract** — to deliver the Service you signed up
   for.
-- **Consent** — for optional permissions (SMS access, notifications)
-  and for any non-essential analytics. You may withdraw consent at any
-  time.
+- **Consent** — for optional permissions (SMS, contacts, camera,
+  photo library, notifications) and for any non-essential analytics.
+  You may withdraw consent at any time.
 - **Legitimate interests** — to keep the Service secure, prevent
   fraud, improve features. Where we rely on legitimate interests, we
   have balanced them against your rights.
@@ -195,8 +306,8 @@ We share personal data only with:
 ### 5.1 Service providers (data processors)
 
 - **Google Firebase** — Authentication, Cloud Firestore (cloud sync),
-  Cloud Functions, Cloud Messaging (FCM push tokens), Crashlytics.
-  Firebase processes data on our behalf under Google's
+  Cloud Functions, Cloud Messaging (FCM push tokens). Firebase
+  processes data on our behalf under Google's
   [Data Processing and Security Terms](https://firebase.google.com/terms/data-processing-terms).
   Default storage region: **asia-south1 (Mumbai)**.
 - **Razorpay Software Private Limited** — when you purchase a paid
@@ -248,6 +359,16 @@ including the **Limited Use requirements**. Specifically:
   comply with applicable law, or for internal operations where the
   data has been aggregated and anonymised.
 
+### 5.1A UPI apps you choose for settlement
+
+When you tap "Settle" on a group debt and pick a UPI app to complete
+the payment, Trackk constructs a `upi://pay?...` deep-link containing
+the recipient's UPI ID, name, the amount, currency, and a transaction
+note (e.g. "Settling Goa Trip group"). This data is handed to the UPI
+app you select (Google Pay, PhonePe, Paytm, BHIM, etc.); Trackk does
+not see, store, or route the actual payment. The UPI app's own
+privacy policy governs what it does with that data thereafter.
+
 ### 5.2 Other users you invite
 
 When you add someone to a group, they will see the group's name, the
@@ -282,10 +403,13 @@ with third parties for their own marketing or advertising.
   data are stored in encrypted application storage (AsyncStorage). On
   Android, this is sandboxed to the Trackk app; on iOS, it lives in the
   app's private Data Container.
-- **In the cloud (optional)** — if you enable cloud sync, personal
-  records are stored in Google Cloud Firestore in the
-  **asia-south1 (Mumbai)** region. Group records are stored similarly. Access is
-  scoped per user via Firebase Security Rules: only you (and, for group
+- **In the cloud** — when you sign in, personal records are
+  automatically synced to your private space in Google Cloud
+  Firestore in the **asia-south1 (Mumbai)** region. This enables
+  seamless multi-device access and protects against data loss if
+  your device is lost or replaced. Group records are stored
+  similarly. Access is scoped per user via Firebase Security Rules:
+  only you (and, for group
   data, members of that specific group) can read your records.
 
 Data may be processed in any country in which Google Firebase operates
@@ -307,9 +431,16 @@ by applicable data-protection law.
 | Authentication / security logs | Up to 12 months for abuse and fraud prevention |
 | Records required by law (tax, accounting, dispute) | For the period required by applicable law |
 
-When you delete your account, we permanently delete or irreversibly
-anonymise your personal data from active systems within **30 days**.
-Backup copies are purged within the backup-rotation window above.
+When you delete your account from **Profile → Delete Account**,
+your profile, transactions, goals, budgets, subscriptions,
+investments, EMIs, reimbursement trips, FCM device tokens, and
+email-connection records are **permanently deleted from active
+Firestore collections immediately**. Your Firebase Authentication
+record is also deleted. Backup copies are purged within the
+rolling-backup rotation above (up to 30 days). Group expenses on
+which you participated remain on the group document so the other
+members' ledgers stay intact, but your personal identifiers are
+removed from your splits.
 
 ---
 
@@ -370,10 +501,13 @@ applicable law (typically 30 days under the Indian DPDPA and the GDPR).
 
 ## 10. Children
 
-The Service is not directed to, and we do not knowingly collect
-personal data from, anyone under **18**. If you believe a child has
-provided us with personal data, please contact support@trackk2save.com and we
-will delete it.
+The Service is intended for users aged **18 and above**. The sign-up
+flow rejects any entered age below 18, and our Terms of Service
+require all Users to be 18+ as a contractual matter. We do not
+knowingly collect personal data from anyone under 18. If you believe
+a person under 18 has nonetheless obtained an account, please
+contact `support@trackk2save.com` and we will delete the account and
+all associated data without delay.
 
 ---
 
@@ -402,6 +536,13 @@ providers (e.g. Google Firebase) act as **Data Processors**.
   > Grievance Officer, Trackk Technologies, a sole proprietorship of Ms. Vandana S
   > 3/336, Sri Sai Nagar, 2nd Street, Hosur, Krishnagiri District, Tamil Nadu – 635126, India
   > Email: support@trackk2save.com
+
+  We will acknowledge your complaint within **48 hours** and
+  provide a substantive response within **30 days** of receipt, in
+  line with the Consumer Protection Act, 2019 and the (forthcoming)
+  DPDPA rules on grievance redressal. If you remain dissatisfied,
+  you may escalate to the Data Protection Board of India once
+  constituted, or to the relevant consumer forum.
 - **Children.** As above, we do not knowingly process data of users
   under 18.
 - **Cross-border transfers.** Data may be processed in regions where
@@ -413,14 +554,29 @@ providers (e.g. Google Firebase) act as **Data Processors**.
 
 ### EEA / UK (GDPR / UK GDPR)
 
-In addition to the rights in Section 9, you have the right to lodge a
-complaint with your local supervisory authority. The Service is offered
-from India and is not actively targeted at users in the EU/UK, so we
-have not appointed an EU/UK Article 27 representative at this time;
-once we begin offering the Service in those regions we will appoint a
-representative and update this Policy. In the meantime, EU/UK users may
-contact us directly at support@trackk2save.com to exercise any rights
-under the GDPR or UK GDPR.
+The Service is distributed via Google Play with a **country
+allowlist** scoped to India and selected South/Southeast Asian
+and Gulf markets where the SMS-detection feature works against
+the user's bank-sender ecosystem (e.g. India, UAE, Saudi
+Arabia, Singapore, Malaysia, Sri Lanka, Bangladesh, Nepal,
+Bhutan, and the Maldives). The EEA and the United Kingdom are
+**not** in the v1.0 distribution allowlist. Accordingly, Trackk
+is not offered, marketed, or available for download in the EEA
+or the UK as of the effective date of this Policy, and we have
+not appointed an Article 27 representative.
+
+If you nonetheless reside in the EEA or UK and have obtained the
+app (for example, by side-loading), you may contact us at
+`support@trackk2save.com` to exercise any rights you believe you
+have under the GDPR or UK GDPR; we extend the substantive rights
+in Section 9 globally as a matter of policy. We will publish an
+update to this Policy, appoint Article 27 representatives in the
+EU and UK, and (where required) declare a Data Protection
+Officer **before** we expand distribution to any EEA / UK country.
+This is targeted for release v1.1, when email-based transaction
+detection becomes the primary auto-detection path and the
+Service becomes useful to users whose banks do not send
+transactional SMS.
 
 ### California (CCPA / CPRA)
 
@@ -440,11 +596,11 @@ data leaves your device.
 
 | Permission | Why we ask | Leaves your device? |
 | --- | --- | --- |
-| `READ_SMS` / `RECEIVE_SMS` (Android, optional) | Detect bank/UPI/card transactions for review | No — only the parsed amount, merchant, and timestamp are stored, and only synced to your private cloud space if you turn on Sync |
+| `READ_SMS` / `RECEIVE_SMS` (Android, optional) | Detect bank/UPI/card transactions for review | Raw SMS bodies never leave the device. The parsed fields (amount, merchant, timestamp) are synced to your private cloud space when you are signed in |
 | `READ_CONTACTS` (Android, optional) | Pick people to add as group members from your contact list | Only the contact entry **you tap to select** is stored against that group; the rest of your address book is never read into our memory or transmitted |
 | `POST_NOTIFICATIONS` (Android) / Notifications (iOS) | Show a tappable card for each detected transaction | No |
 | `RECEIVE_BOOT_COMPLETED`, `VIBRATE`, `WAKE_LOCK` (Android) | Restart the SMS listener after a reboot and deliver notifications reliably | No |
-| `INTERNET` | Authentication, optional cloud sync, exchange-rate refresh, payment processing | Yes — only when sync, sign-in, or a payment is in flight |
+| `INTERNET` | Authentication, cloud sync, exchange-rate refresh, payment processing | Yes — only for sign-in, sync, exchange-rate refresh, or a payment in flight |
 | Document picker | Import a JSON backup, attach a receipt image | No, unless you choose to sync the attachment |
 | FCM device token (Firebase Cloud Messaging) | Deliver push notifications to your device | The token is stored in Firestore against your user ID; it cannot be used to identify your device outside Firebase |
 | Razorpay SDK (Android, when you purchase a subscription) | Process the payment for a paid plan | Card / UPI / bank details go directly to Razorpay; we never see them |
