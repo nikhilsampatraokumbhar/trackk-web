@@ -7,7 +7,7 @@ permalink: /privacy/
 # Trackk — Privacy Policy
 
 **Effective date:** TBD — set on Play Store launch
-**Last updated:** 19 May 2026
+**Last updated:** 28 May 2026
 
 This Privacy Policy explains what personal data **Trackk Technologies, a sole proprietorship of Ms. Vandana S**
 ("**we**", "**our**", "**us**") collects about you when you use the
@@ -16,7 +16,7 @@ we use it, with whom we share it, how we protect it, and the choices
 and rights you have.
 
 This Policy forms part of, and should be read together with, our
-[Terms of Service](./TERMS_AND_CONDITIONS.md). By using the Service you
+[Terms of Service](/terms/). By using the Service you
 acknowledge the practices described here.
 
 ---
@@ -71,9 +71,10 @@ The rest of this document is the formal version.
 ### 2.1 Information you provide
 
 - **Account information** — name, profile photo (if any), email
-  address, phone number, age (optional), and password (only when you
-  choose email/password sign-in — stored hashed by Firebase
-  Authentication, never visible to us in clear text). The exact
+  address, phone number, age (optional), UPI ID / VPA (optional — only
+  if you add one in Profile to receive group settlements), and password
+  (only when you choose email/password sign-in — stored hashed by
+  Firebase Authentication, never visible to us in clear text). The exact
   fields collected depend on which sign-in method you choose:
   Google Sign-In, Sign in with Apple (when iOS launches),
   email + password, or phone number with OTP.
@@ -85,7 +86,7 @@ The rest of this document is the formal version.
     Cash), receipt image URI you choose to attach.
   - **Goals** — target amounts, target dates, savings progress,
     streak counters, custom finance items (salary, monthly
-    expenses, EMIs, maintenance).
+    expenses, EMIs, maintenance, planned monthly savings).
   - **Budgets** — overall and per-category monthly budgets, alert
     thresholds.
   - **Subscriptions** — recurring services you track, their
@@ -97,8 +98,9 @@ The rest of this document is the formal version.
   - **Reimbursement trips** — trip name, dates, associated
     transactions, attached receipt image URIs.
 - **Group data** — group name, group photo (if you upload one),
-  member list (display name + phone / email of each invited
-  member), group expenses, splits, settlements, comments. If you
+  member list (display name + phone / email, plus UPI ID where a
+  member has added one, of each invited member), group expenses,
+  splits, settlements, comments. If you
   import a member via **"Add from contacts"** (Android, see §2.2),
   the name, phone number, and contact photo of the entries you
   select are saved against that group.
@@ -374,9 +376,13 @@ privacy policy governs what it does with that data thereafter.
 When you add someone to a group, they will see the group's name, the
 expenses you've recorded in that group, your contribution and balance
 calculations, comments you post, and any display name you've chosen.
-They will not see your other groups, your personal transactions, your
-goals, your budget, your contact details (beyond what you've shared
-with them outside the app), or your account information.
+If you have added a UPI ID to your profile, it is also shared with the
+members of every group you belong to so they can pay you back via their
+own UPI app; you can change or remove it at any time in Profile, which
+updates it across your groups. Apart from your display name and (if you
+set one) your UPI ID, they will not see your other groups, your personal
+transactions, your goals, your budget, your contact details (beyond what
+you've shared with them outside the app), or your account information.
 
 ### 5.3 Legal disclosures
 

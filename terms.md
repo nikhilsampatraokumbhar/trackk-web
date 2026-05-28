@@ -7,7 +7,7 @@ permalink: /terms/
 # Trackk — Terms of Service
 
 **Effective date:** TBD — set on Play Store launch
-**Last updated:** 19 May 2026
+**Last updated:** 28 May 2026
 
 These Terms of Service ("**Terms**") govern your access to and use of the
 Trackk mobile application, related websites, and any associated services
@@ -15,7 +15,7 @@ Trackk mobile application, related websites, and any associated services
 "**our**", "**us**"), having its registered office at 3/336, Sri Sai Nagar, 2nd Street, Hosur, Krishnagiri District, Tamil Nadu – 635126, India.
 
 By creating an account, signing in, or otherwise using Trackk, **you agree
-to be bound by these Terms and the [Privacy Policy](./PRIVACY_POLICY.md)**.
+to be bound by these Terms and the [Privacy Policy](/privacy/)**.
 If you do not agree, do not use the Service.
 
 ---
@@ -70,7 +70,7 @@ first appear.
   Premium-only features. Premium is not enabled in v1.0; all
   features are available free.
 - **"Personal Data"** — has the meaning given in the
-  [Privacy Policy](./PRIVACY_POLICY.md).
+  [Privacy Policy](/privacy/).
 - **"DPDPA"** — the Digital Personal Data Protection Act, 2023
   (India).
 - **"IT Act"** — the Information Technology Act, 2000 (India), as
@@ -230,14 +230,20 @@ You represent and warrant that:
 
 When you join or create a group, transactions, splits, comments, member
 display names, and balances within that group are shared with the other
-members of that group. Settlement actions (such as UPI deep-links) are
-constructed locally on your device and executed via a third-party UPI
-app of your choice; we are not a party to, and do not guarantee, any
-settlement.
+members of that group. If you add a UPI ID to your profile, it is also
+shared with the members of the groups you belong to so they can pay you
+back. Settlement actions (such as UPI deep-links) are constructed
+locally on your device and executed via a third-party UPI app of your
+choice; we are not a party to, and do not guarantee, any settlement.
 
 You are responsible for verifying that you are inviting the correct
-people, that the splits you record are accurate, and that any
-settlements actually take place.
+people, that the splits you record are accurate, that any UPI ID you add
+is correct and current, and that any settlements actually take place.
+Before completing a payment, you are responsible for confirming the
+recipient, the UPI ID, and the amount inside your UPI app. We are not
+liable for payments sent to the wrong recipient or for the wrong amount,
+including where a UPI ID is mistyped, out of date, or belongs to someone
+other than the intended payee.
 
 ---
 
