@@ -6,8 +6,8 @@ permalink: /privacy/
 
 # Trackk — Privacy Policy
 
-**Effective date:** TBD — set on Play Store launch
-**Last updated:** 28 May 2026
+**Effective date:** 20 June 2026
+**Last updated:** 20 June 2026
 
 This Privacy Policy explains what personal data **Trackk Technologies, a sole proprietorship of Ms. Vandana S**
 ("**we**", "**our**", "**us**") collects about you when you use the
@@ -26,6 +26,7 @@ acknowledge the practices described here.
 1. [A One-Page Summary](#1-a-one-page-summary)
 2. [Information We Collect](#2-information-we-collect)
 3. [How We Use Your Information](#3-how-we-use-your-information)
+3A. [Advertising (Planned)](#3a-advertising-planned)
 4. [Legal Bases for Processing](#4-legal-bases-for-processing)
 5. [How We Share Your Information](#5-how-we-share-your-information)
 6. [Where Your Data Is Stored](#6-where-your-data-is-stored)
@@ -55,8 +56,11 @@ have to dig:
   OTPs, or unrelated messages to our servers. Only the parsed
   transaction fields (amount, merchant, timestamp) are saved to your
   own private cloud space, accessible only to you.
-- **We don't sell your data. Ever.** Not to advertisers, not to data
-  brokers, not to any third party.
+- **We don't sell your data. Ever.** Not to data brokers, not to any
+  third party. A future version may show **ads** served by a third-party
+  ad network (such as Google AdMob), which uses standard device signals
+  to deliver them — but we will **never** share your transactions, SMS,
+  or email content with any advertiser or ad network.
 - **We don't have access to your bank.** We never ask for and never
   store your banking credentials, OTP codes, card numbers, or CVVs.
 - **You can delete everything.** Profile → Delete Account permanently
@@ -255,9 +259,44 @@ We use the data described above strictly to:
 We **do not**:
 
 - sell or rent your personal data;
-- share it with advertisers, ad networks, or data brokers;
+- share your **financial data** — transactions, balances, SMS content,
+  or email content — with advertisers, ad networks, or data brokers;
 - use it to train third-party AI/ML models;
 - use it for credit-scoring, lending, or insurance decisions.
+
+---
+
+## 3A. Advertising (Planned)
+
+Trackk v1.0 shows **no ads**. A future version (Android and iOS) may
+display advertising to support the free tier. When that happens:
+
+- **Ads will be served by a third-party ad network** (for example,
+  **Google AdMob**). To show and measure ads, the ad network may
+  access standard advertising signals from your device — such as your
+  **Advertising ID** (Android `AD_ID` / iOS IDFA), coarse device and
+  app information, and ad interaction events — under its own privacy
+  policy.
+- **We will never use your financial data for advertising.** Your
+  transactions, balances, SMS content, email content, goals, and group
+  data are **never** shared with, or used to target, ads. Per the
+  Google API Services User Data Policy, data obtained from the optional
+  email feature will never be used for advertising (see §5.1).
+- **Premium removes ads.** If you subscribe to a paid plan, ads are
+  switched off.
+- **Your controls.** You can reset or limit your Advertising ID in your
+  device settings at any time (Android: Settings → Privacy → Ads; iOS:
+  Settings → Privacy & Security → Tracking / Apple Advertising). On iOS,
+  if we ever serve **personalised** ads we will first request your
+  permission through Apple's **App Tracking Transparency** prompt
+  (see §14A).
+- **Before ads go live**, we will update this Policy, the in-app
+  disclosures, and our Google Play Data Safety / Apple App Privacy
+  declarations to reflect exactly what the ad SDK collects.
+
+Until ads are enabled, no advertising SDK is active and no advertising
+identifiers are collected, even if related code ships in the app
+binary.
 
 ---
 
@@ -334,6 +373,11 @@ We share personal data only with:
   is transmitted.
 - **Customer-support providers** — Zoho Mail handles
   `support@trackk2save.com` correspondence when you contact us.
+- **Advertising network (planned, see §3A)** — once the free-tier ad
+  feature ships, a third-party ad network (such as Google AdMob) will
+  serve ads and, for that purpose, receive standard advertising signals
+  (e.g. Advertising ID, coarse device/app data, ad events) under its own
+  privacy policy. It will **not** receive your financial data.
 
 We sign written agreements with all providers that require them to
 process your data only on our instructions and to keep it secure.
@@ -398,8 +442,12 @@ We may disclose personal data:
 
 ### 5.4 What we never do
 
-We **do not sell** personal data, and we **do not share** personal data
-with third parties for their own marketing or advertising.
+We **do not sell** personal data, and we **do not share** your
+**financial data** (transactions, balances, SMS, or email content) with
+third parties for their own marketing or advertising. The planned
+free-tier ad feature (§3A) shares only standard advertising signals
+(e.g. Advertising ID) with the ad network to serve ads — never your
+financial data.
 
 ---
 
@@ -586,8 +634,14 @@ transactional SMS.
 
 ### California (CCPA / CPRA)
 
-We do **not** sell or share personal information for cross-context
-behavioural advertising. California residents have the right to know,
+As of the effective date we do **not** sell or share personal
+information for cross-context behavioural advertising, and the United
+States is not in the v1.0 distribution allowlist. If the planned ad
+feature (§3A) is later enabled in a release distributed to California
+residents and involves "sharing" for cross-context behavioural
+advertising, we will provide a clear **"Do Not Sell or Share My Personal
+Information"** opt-out and honour Global Privacy Control signals before
+that change takes effect. California residents have the right to know,
 delete, correct, and request restriction of sensitive personal
 information. To exercise these rights, email support@trackk2save.com with the
 subject line "**California Privacy Request**".
@@ -612,6 +666,7 @@ data leaves your device.
 | Razorpay SDK (Android, when you purchase a subscription) | Process the payment for a paid plan | Card / UPI / bank details go directly to Razorpay; we never see them |
 | `gmail.readonly` or equivalent (planned, optional) | Detect bank emails — only when you connect a mailbox in Profile | The relevant message content is read by our Cloud Functions in `asia-south1`; only parsed amount/merchant/timestamp are persisted |
 | iOS Shortcuts deep-link (planned, iOS only, optional) | Receive transaction data your Shortcut chooses to send | The Shortcut runs entirely on your device; only the fields you forward are stored |
+| `AD_ID` / Advertising ID (planned — only if/when the free-tier ad feature ships) | Let the ad network (e.g. AdMob) serve and measure ads | The Advertising ID and standard ad signals go to the ad network under its policy; **never** your financial data |
 
 We do not request `ACCESS_FINE_LOCATION`, `CAMERA` (other than when you
 tap "Attach receipt"), `RECORD_AUDIO`, `READ_CALL_LOG`,
@@ -631,11 +686,15 @@ Apple App Store:
   Developer Program Guideline 4.8. If you sign in with Apple's
   "Hide my email" option, the relay email we receive is the only
   email address we will hold for you.
-- **App Tracking Transparency (ATT).** Trackk does not engage in
-  "tracking" as defined by Apple — we do not link user or device
-  identifiers from this app with third-party data for advertising
-  purposes, and we do not share identifiers with data brokers.
-  Accordingly, the app does not present an ATT prompt.
+- **App Tracking Transparency (ATT).** At launch, Trackk does not
+  engage in "tracking" as defined by Apple — we do not link user or
+  device identifiers from this app with third-party data for advertising
+  purposes, and we do not share identifiers with data brokers, so the
+  app presents no ATT prompt. **If the planned ad feature (§3A) later
+  serves personalised ads on iOS**, we will present Apple's ATT prompt
+  and only enable tracking with your permission; declining means you
+  still see non-personalised ads (or none, with Premium). We will update
+  this Policy and the App Privacy labels before that change ships.
 - **In-App Purchase.** All paid subscriptions on iOS are processed
   exclusively via Apple In-App Purchase; Razorpay is not used on
   iOS. Apple receives transaction data; we receive only the

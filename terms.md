@@ -6,8 +6,8 @@ permalink: /terms/
 
 # Trackk — Terms of Service
 
-**Effective date:** TBD — set on Play Store launch
-**Last updated:** 28 May 2026
+**Effective date:** 20 June 2026
+**Last updated:** 20 June 2026
 
 These Terms of Service ("**Terms**") govern your access to and use of the
 Trackk mobile application, related websites, and any associated services
@@ -30,6 +30,7 @@ If you do not agree, do not use the Service.
 6. [Your Content](#6-your-content)
 7. [Group Features](#7-group-features)
 8. [Premium and Paid Features](#8-premium-and-paid-features)
+8A. [Advertising](#8a-advertising)
 9. [Acceptable Use](#9-acceptable-use)
 10. [Third-Party Services](#10-third-party-services)
 11. [Intermediary Status (IT Act, 2000)](#11-intermediary-status-it-act-2000)
@@ -279,6 +280,26 @@ for Razorpay-processed plans.
 
 ---
 
+## 8A. Advertising
+
+The free tier of the Service may, in a future release (Android and iOS),
+display **advertising** served by third-party ad networks (such as Google
+AdMob). You acknowledge that:
+
+- ads are provided by third parties and we do not endorse, and are not
+  responsible for, their content, accuracy, or the products or services
+  they promote;
+- ad networks may use standard advertising identifiers and device signals
+  to serve and measure ads, as described in the
+  [Privacy Policy](/privacy/) (§3A). We do **not** share your financial
+  data (transactions, balances, SMS, or email content) with any advertiser
+  or ad network;
+- subscribing to **Premium**, when offered, removes ads;
+- advertising is not active in v1.0. We will update these Terms, the
+  Privacy Policy, and the in-app disclosures before ads are enabled.
+
+---
+
 ## 9. Acceptable Use
 
 You agree not to:
@@ -308,7 +329,9 @@ limitation, **Google Firebase** (authentication, Firestore, FCM,
 Cloud Functions), **Razorpay** (payment processing on
 Android), **Google Play Billing**, **Apple In-App Purchase**, the
 **Gmail / Microsoft Graph / Yahoo Mail APIs** (for the optional
-planned email-scanning feature), and exchange-rate APIs. Where you
+planned email-scanning feature), third-party **advertising networks**
+such as Google AdMob (for the planned free-tier ads, see §8A), and
+exchange-rate APIs. Where you
 choose to settle a balance, it routes through your selected UPI app.
 These third parties are governed by their own terms and privacy
 policies. We are not responsible for their acts or omissions.
