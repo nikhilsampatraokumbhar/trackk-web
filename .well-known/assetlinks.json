@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.trackk.app",
+      "sha256_cert_fingerprints": [
+        "59:B3:8E:3F:D1:9B:0F:E8:4A:2A:23:72:AE:29:BB:7F:34:03:3C:A5:78:75:3F:52:5C:26:D4:EF:5C:7E:A2:52",
+        "3C:77:F9:23:ED:22:24:CD:1A:4B:A2:54:0D:D1:1F:B3:D5:48:3A:E7:8C:93:77:DD:95:5D:6A:34:D3:01:9D:87"
+      ]
+    }
+  }
+]

@@ -6,3 +6,6 @@ url: https://trackk2save.com
 exclude:
   - README.md
   - LICENSE
+
+include:
+  - .well-known
