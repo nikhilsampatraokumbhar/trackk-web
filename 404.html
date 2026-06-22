@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Trackk</title>
+  <style>
+    body { font-family: -apple-system, system-ui, Segoe UI, Roboto, sans-serif;
+           background:#0B0D10; color:#ECEFF3; margin:0;
+           display:flex; min-height:100vh; align-items:center; justify-content:center; }
+    .card { text-align:center; padding:32px; max-width:360px; }
+    a.btn { display:inline-block; margin-top:16px; padding:12px 20px; border-radius:999px;
+            background:#5B96F7; color:#fff; text-decoration:none; font-weight:600; }
+    p.sub { color:#A0A8B3; font-size:14px; line-height:20px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2 id="title">Opening Trackk…</h2>
+    <p class="sub" id="sub">If the app doesn't open, install Trackk — you'll land in the group automatically.</p>
+    <a class="btn" id="cta" href="https://trackk2save.com">Go to Trackk</a>
+  </div>
+  <script>
+    (function () {
+      var m = (location.pathname || '').match(/\/join\/([^\/?#]+)/);
+      var pkg = 'com.trackk.app';
+      if (m) {
+        var code = m[1].replace(/[^A-Za-z0-9]/g, '');
+        var play = 'https://play.google.com/store/apps/details?id=' + pkg +
+          (code ? '&referrer=' + encodeURIComponent('join_' + code) : '');
+        var cta = document.getElementById('cta');
+        cta.href = play;
+        cta.textContent = 'Get Trackk on Google Play';
+        if (code) { try { window.location.href = 'trackk://join/' + code; } catch (e) {} }
+        setTimeout(function () { window.location.href = play; }, 700);
+      } else {
+        document.getElementById('title').textContent = 'Page not found';
+        document.getElementById('sub').textContent = 'That link doesn\u2019t exist. Head back to Trackk.';
+      }
+    })();
+  </script>
+</body>
+</html>
