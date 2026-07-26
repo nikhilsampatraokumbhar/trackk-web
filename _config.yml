@@ -1,7 +1,7 @@
 # Jekyll config for trackk2save.com (GitHub Pages).
 # Kept minimal so we don't depend on any theme — every page is plain HTML.
 title: Trackk
-description: A smarter expense tracker. Track personal spending, split with friends, hit your savings goals.
+description: A smarter expense tracker. Track personal spending and split expenses with friends, automatically.
 url: https://trackk2save.com
 exclude:
   - README.md
