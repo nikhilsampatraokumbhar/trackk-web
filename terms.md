@@ -88,7 +88,7 @@ You can use it to:
   on your device;
 - categorise, tag, and analyse your spending;
 - split shared expenses with friends or family in groups;
-- set savings goals and budgets;
+- set budgets;
 - generate reports and exports of your own data.
 
 **Trackk is not, and does not hold itself out to be:**
