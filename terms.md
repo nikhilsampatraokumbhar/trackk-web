@@ -7,7 +7,7 @@ permalink: /terms/
 # Trackk — Terms of Service
 
 **Effective date:** 20 June 2026
-**Last updated:** 20 June 2026
+**Last updated:** 20 October 2026
 
 These Terms of Service ("**Terms**") govern your access to and use of the
 Trackk mobile application, related websites, and any associated services
@@ -68,8 +68,8 @@ first appear.
 - **"Group"** — a shared expense container created or joined by
   you, in which you have invited or accepted other Users.
 - **"Premium"** — a paid plan, when offered, that unlocks
-  Premium-only features. Premium is not enabled in v1.0; all
-  features are available free.
+  Premium-only features. Paid plans are not switched on at present;
+  all features are available free.
 - **"Personal Data"** — has the meaning given in the
   [Privacy Policy](/privacy/).
 - **"DPDPA"** — the Digital Personal Data Protection Act, 2023
@@ -88,7 +88,7 @@ You can use it to:
   on your device;
 - categorise, tag, and analyse your spending;
 - split shared expenses with friends or family in groups;
-- set budgets;
+- set budgets, and plan and track an emergency fund;
 - generate reports and exports of your own data.
 
 **Trackk is not, and does not hold itself out to be:**
@@ -108,7 +108,11 @@ by that app's terms.
 
 Any insight, suggestion, summary, projection, or category our software
 generates is informational only and must not be relied upon as financial
-advice. **You are solely responsible for your financial decisions.**
+advice. This includes the emergency fund's figures (your average monthly
+spending, how long your savings would last, and how much to put aside),
+which are estimates worked out from the expenses Trackk has. They can be
+wrong if expenses are missing, misread, or counted in the wrong month.
+**You are solely responsible for your financial decisions.**
 
 ---
 
@@ -157,10 +161,14 @@ to function with reduced automation.
   reads transactional messages from senders that match a curated list of
   bank, card, UPI, and lender identifiers in order to extract the
   amount, merchant, and timestamp. **Parsing happens on your device.**
-  We do not transmit your raw SMS content to our servers. Only the
-  parsed transaction fields (amount, merchant, timestamp) are
-  uploaded to your private space in our cloud database to enable
-  multi-device sync and protect against data loss. We do not read, store, or
+  We do not transmit your raw SMS content to our servers; the text of a
+  bank message stays on your device with the expense it became. Only the
+  parsed transaction fields (amount, merchant, timestamp) and one-way
+  codes used to spot duplicates are uploaded to your private space in
+  our cloud database to enable multi-device sync and protect against
+  data loss. When you ask for it, the quick scan on the emergency fund
+  page reads your bank messages from the last 3 months once, on your
+  device, in the same way. We do not read, store, or
   process personal SMS, OTPs (other than discarding them), promotional
   messages, or any content unrelated to financial transactions.
 - **Contacts (Android).** With your explicit consent, when you tap
@@ -175,11 +183,13 @@ to function with reduced automation.
   detect transactional emails from a curated bank-sender list. Until
   this feature is enabled in the app and disclosed via an updated
   Privacy Policy, no mailbox content is read.
-- **iOS Shortcuts deep-link (planned, iOS only, optional).** You
-  may configure Apple Shortcuts automations that forward
-  transaction data to Trackk via the `trackk://transaction?...` URL
-  scheme. Trackk does not read SMS, Wallet, Apple Pay, or bank
-  data on iOS — it only receives what your Shortcut sends.
+- **"Add from message" (iPhone, optional, iOS 27 or later).** You
+  may set up an Apple Shortcuts automation that hands the messages you
+  receive to Trackk's "Add from message" action. Trackk keeps only
+  messages with a rupee amount, reads them on your iPhone in the same
+  way as on Android, and discards every other message at once. Trackk
+  does not read SMS, Wallet, Apple Pay, or bank data on iOS; it only
+  receives what your automation hands it.
 - **Notifications.** Used to surface detected transactions for your
   review. No notification content is sent off-device.
 - **Network.** Required for cloud sync, group features, exchange-rate
@@ -194,14 +204,20 @@ You acknowledge and agree that:
    before relying on them.
 2. We do not access your bank, credit-card, or wallet accounts directly,
    and we do not have, nor request, your banking credentials.
+3. Trackk may remove an expense it believes was saved twice, or that is
+   not spending (such as a credit-card bill payment or a move between
+   your own accounts). It tells you when it does, and keeps what it
+   removed in Recently deleted for 30 days so you can put it back.
 
 ---
 
 ## 6. Your Content
 
 "**Your Content**" means transactions, notes, group memberships, group
-expenses, settlements, comments, goals, budgets, custom categories, and
-any other data you record, upload, or generate using the Service.
+expenses, settlements, comments, budgets, your emergency fund, custom
+categories, and any other data you record, upload, or generate using
+the Service. When you delete an expense, it stays in Recently deleted
+for 30 days so you can put it back, and is then removed for good.
 
 You retain all rights in Your Content. You grant us a **limited,
 non-exclusive, royalty-free, worldwide licence** to host, store, copy,
@@ -210,7 +226,11 @@ display, transmit, and process Your Content **solely** to:
 - provide and improve the Service;
 - sync your data across your devices via your private cloud space;
 - share Your Content with members of groups you have voluntarily joined,
-  to the extent necessary for the group features to work.
+  to the extent necessary for the group features to work;
+- use the bank-message templates you confirm and the shop categories
+  you choose (which carry no amounts, account numbers, or personal
+  names; see the Privacy Policy, §2.2) to recognise formats and suggest
+  categories for all users.
 
 This licence ends when you delete the corresponding Content or your
 account, except where retention is required to comply with law, resolve
@@ -291,11 +311,11 @@ AdMob). You acknowledge that:
   they promote;
 - ad networks may use standard advertising identifiers and device signals
   to serve and measure ads, as described in the
-  [Privacy Policy](/privacy/) (§3A). We do **not** share your financial
-  data (transactions, balances, SMS, or email content) with any advertiser
-  or ad network;
+  [Privacy Policy](/privacy/) (§3A). We do **not** share your
+  financial data (transactions, balances, SMS, or email content) with any
+  advertiser or ad network;
 - subscribing to **Premium**, when offered, removes ads;
-- advertising is not active in v1.0. We will update these Terms, the
+- advertising is not active at present. We will update these Terms, the
   Privacy Policy, and the in-app disclosures before ads are enabled.
 
 ---
@@ -377,8 +397,9 @@ DEALING OR USAGE OF TRADE.
 WITHOUT LIMITING THE FOREGOING, WE DO NOT WARRANT THAT:
 
 - the Service will be uninterrupted, secure, or error-free;
-- transaction detection, categorisation, currency conversion, projections,
-  or any computed amount will be accurate, complete, or timely;
+- transaction detection, duplicate detection, categorisation, currency
+  conversion, projections, emergency fund figures, or any computed
+  amount will be accurate, complete, or timely;
 - any data displayed or exported reconciles with your bank statement,
   tax return, or any other authoritative record;
 - defects will be corrected or that the Service is free of viruses or

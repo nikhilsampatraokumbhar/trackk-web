@@ -14,8 +14,8 @@ Trackk account and all of the personal data associated with it.
 1. Open Trackk.
 2. Go to **Profile** (bottom-right tab).
 3. Scroll to the bottom and tap **Delete Account**.
-4. Confirm. Your account, transactions, groups, goals, and any data
-   stored in our cloud are scheduled for immediate deletion.
+4. Confirm. Your account, expenses, groups, emergency fund, and any
+   data stored in our cloud are scheduled for immediate deletion.
 
 You will be signed out. The app will continue to work in local-only
 mode if you re-install it — none of your previous data will be
@@ -37,8 +37,9 @@ prevent malicious deletions.
 
 When your account is deleted:
 
-- Your **profile, transactions, goals, budgets, custom categories, and
-  notes** are permanently removed from our active systems.
+- Your **profile, expenses, notes, budgets, custom categories,
+  emergency fund, Recently deleted, and the codes of bank messages you
+  deleted** are permanently removed from our active systems.
 - **Your private cloud data** in Cloud Firestore (if cloud sync was
   enabled) is deleted immediately.
 - **Authentication records** are deleted from Firebase Authentication.
@@ -59,6 +60,10 @@ for the periods specified in our
   document while the group itself still exists (so the other members'
   ledgers don't break), but your personal identifiers are removed
   from your splits.
+- **Votes you gave to the shared shop categories and bank-message
+  templates** stay in those shared lists, linked only to an account ID
+  that no longer exists. They carry no amounts, account numbers, or
+  personal names.
 
 ## How long it takes
 

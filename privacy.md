@@ -7,7 +7,7 @@ permalink: /privacy/
 # Trackk — Privacy Policy
 
 **Effective date:** 20 June 2026
-**Last updated:** 20 June 2026
+**Last updated:** 20 October 2026
 
 This Privacy Policy explains what personal data **Trackk Technologies, a sole proprietorship of Ms. Vandana S**
 ("**we**", "**our**", "**us**") collects about you when you use the
@@ -38,7 +38,7 @@ acknowledge the practices described here.
 12. [India-Specific Disclosures (DPDPA, 2023)](#12-india-specific-disclosures-dpdpa-2023)
 13. [Region-Specific Rights](#13-region-specific-rights)
 14. [Permissions Disclosure (Play Store / App Store)](#14-permissions-disclosure-play-store--app-store)
-14A. [Apple-Specific Disclosures (iOS, when available)](#14a-apple-specific-disclosures-ios-when-available)
+14A. [Apple-Specific Disclosures (iOS)](#14a-apple-specific-disclosures-ios)
 15. [Changes to This Policy](#15-changes-to-this-policy)
 16. [Contact Us](#16-contact-us)
 
@@ -49,13 +49,16 @@ acknowledge the practices described here.
 We've also written this out in plain English at the top so you don't
 have to dig:
 
-- **You own your data.** Transactions, groups, goals, notes, and tags
-  belong to you. You can export everything as JSON at any time.
-- **SMS stays on your device.** When you enable SMS detection (Android
-  only), parsing happens locally. We do **not** upload your raw SMS,
-  OTPs, or unrelated messages to our servers. Only the parsed
-  transaction fields (amount, merchant, timestamp) are saved to your
-  own private cloud space, accessible only to you.
+- **You own your data.** Expenses, groups, notes, tags and your
+  emergency fund belong to you. You can export everything as JSON at any
+  time.
+- **SMS stays on your device.** When you enable SMS detection (on
+  Android, or "Add from message" on iPhone), parsing happens locally. We do **not** upload your raw SMS,
+  OTPs, or unrelated messages to our servers. The text of a bank
+  message stays on your phone, with the expense it became. Only the
+  parsed transaction fields (amount, merchant, timestamp) and one-way
+  codes used to spot duplicates are saved to your own private cloud
+  space, accessible only to you.
 - **We don't sell your data. Ever.** Not to data brokers, not to any
   third party. A future version may show **ads** served by a third-party
   ad network (such as Google AdMob), which uses standard device signals
@@ -80,7 +83,7 @@ The rest of this document is the formal version.
   (only when you choose email/password sign-in — stored hashed by
   Firebase Authentication, never visible to us in clear text). The exact
   fields collected depend on which sign-in method you choose:
-  Google Sign-In, Sign in with Apple (when iOS launches),
+  Google Sign-In, Sign in with Apple (on iOS),
   email + password, or phone number with OTP.
 - **Profile preferences** — display name, preferred currency, language,
   theme, default tracker, notification preferences.
@@ -88,17 +91,18 @@ The rest of this document is the formal version.
   - **Transactions** — amount, merchant, description, category,
     tags, notes, timestamp, payment-mode hints (UPI / Card /
     Cash), receipt image URI you choose to attach.
-  - **Goals** — target amounts, target dates, savings progress,
-    streak counters, custom finance items (salary, monthly
-    expenses, EMIs, maintenance, planned monthly savings).
   - **Budgets** — overall and per-category monthly budgets, alert
     thresholds.
-  - **Subscriptions** — recurring services you track, their
-    amount, billing cycle, next-due date.
-  - **Investments** — instrument name, type, invested amount,
-    current value, notes.
-  - **EMIs** — loan name, principal, monthly amount, tenure,
-    interest rate, notes.
+  - **Emergency fund** — how much you have set aside and what you
+    add to it, your monthly take-home pay (optional, only if you
+    enter it), how much you plan to put aside each month, the day of
+    your monthly reminder, your own estimate of a month's spending
+    (optional), and your answers to "Is this payment for your
+    fund?". The fund's figures (your average monthly spending and how
+    long your savings would last) are worked out on your phone from
+    your expenses.
+  - **Recently deleted** — expenses you delete, kept for 30 days so
+    you can put them back, without the bank message.
   - **Reimbursement trips** — trip name, dates, associated
     transactions, attached receipt image URIs.
 - **Group data** — group name, group photo (if you upload one),
@@ -124,11 +128,46 @@ The rest of this document is the formal version.
   `READ_SMS` permission, the app scans messages from a curated list of
   bank, card, UPI, lender, broker, and mutual-fund-registrar senders to
   detect debit/credit events. **Parsing is performed locally on your
-  device.** Only the structured output (amount, merchant string,
-  timestamp, payment-mode hint, sender identifier) is stored. We do not
-  read OTPs, personal conversations, marketing messages, or any non-
-  transactional content, and we do not transmit raw SMS bodies to our
-  servers. We deliberately discard one-time passwords if encountered.
+  device.** The structured output (amount, merchant string, timestamp,
+  payment-mode hint, sender identifier) is stored and synced. The
+  message text is kept only on your phone, with the expense it became,
+  so you can see it on the expense's page. We do not read OTPs,
+  personal conversations, marketing messages, or any non-transactional
+  content, and we do not transmit raw SMS bodies to our servers. We
+  deliberately discard one-time passwords if encountered.
+- **One-way codes, to spot duplicates.** One payment often sends two
+  messages, and the same message can reach Trackk twice. So that it is
+  saved once, Trackk keeps with each expense one-way codes (hashes) of
+  its bank message and of the payment's reference number or card,
+  amount, shop and time. They travel with the expense to your private
+  cloud space, and with a group expense to that group. Nothing can be
+  read back from them. When you delete an expense, the code of its
+  message is kept in your private cloud space (the newest 3,000), so a
+  later scan, or a new phone, never brings that expense back.
+- **Quick scan of past messages (Android, optional).** When you tap
+  the quick scan on the emergency fund page, Trackk reads your
+  messages from the last 3 months once, on your phone, in exactly the
+  same way, and saves the payments it finds as expenses. You can undo
+  the whole scan in one tap.
+- **New bank message formats.** When Trackk meets a bank message in a
+  format it does not know, it asks you whether it is an expense. Your
+  answer is saved in your private cloud space. If you say it is,
+  Trackk also sends that format's **template** to a list shared by
+  all users: the bank's sender name and the fixed words of the
+  message, with every amount, account number, name, reference number
+  and date removed. Your vote is counted with your account ID, so each
+  person counts once. When enough people confirm a template, Trackk
+  recognises that format for everyone. One example message is kept on
+  your phone only, to show you in Profile → Bank message formats.
+- **Shared shop categories.** When you choose a category for a shop
+  whose name looks like a business, Trackk sends the shop's name and
+  the category to a list shared by all users, counted with your
+  account ID so each person counts once. Names that look like a
+  person's, and anything with numbers in it (such as card endings),
+  are never sent. When enough people agree, Trackk suggests that
+  category to others. To fill in categories on your own expenses,
+  Trackk asks this list about the shops on them, sending only the shop
+  names that look like a business.
 - **Contacts (Android only, optional).** If you grant the
   `READ_CONTACTS` permission and tap the "Add from contacts" button
   when creating or editing a group, the app reads your contact list so
@@ -141,6 +180,10 @@ The rest of this document is the formal version.
   permission at any time in device settings; the app continues to
   function and you can still add members by typing their phone /
   email manually.
+- **Contacts on iPhone (optional).** On iPhone, Trackk uses Apple's
+  own contact picker and asks for no contacts permission. Trackk sees
+  only the one person you tap (name, phone number and photo), and saves
+  it against the group you are adding them to, nothing else.
 - **Email mailbox access (planned, all platforms — not active in the
   current Android release).** A future version of the Service will
   offer an **optional** "Connect Email" feature in Profile that, with
@@ -159,15 +202,25 @@ The rest of this document is the formal version.
   Policy and the in-app consent screen will be updated before the
   feature is enabled.** Until then, no email content is accessed,
   even if related code is present in the app binary.
-- **iOS Shortcuts deep-link source (planned, iOS only — not active
-  in the current release).** When iOS support launches, you may
-  optionally configure Apple Shortcuts automations that hand
-  transaction data (amount, merchant, timestamp) to Trackk via the
-  `trackk://transaction?...` URL scheme. **Trackk does not read SMS,
-  Apple Pay, Wallet, or banking data directly on iOS** — it only
-  receives the data your Shortcut chooses to send. The Shortcut runs
-  entirely on your device, under your control, and you can delete it
-  at any time from the Shortcuts app.
+- **Bank messages on iPhone: "Add from message" (optional, offered on
+  iOS 27 or later).** iPhone does not let any app read your messages. If you
+  choose to, you make one Messages automation in Apple's Shortcuts app
+  that hands each message you receive to Trackk's "Add from message"
+  action, on your phone. Trackk keeps only messages with an amount in
+  rupees (Rs, INR or ₹) and discards every other message at once,
+  without storing it. A kept message stays on your phone only until
+  Trackk reads it, with the same on-device parser as on Android, and is
+  then deleted. Only the parsed transaction fields (amount, merchant,
+  timestamp) are saved, as with SMS on Android. Trackk also notes the
+  time the last message arrived, on your phone, only to tell you
+  whether this is working. Once, when you finish setting it up and tap
+  Continue, Trackk asks the same shortcut for your most recent bank
+  messages (up to 5, which iPhone asks you to allow), so your latest
+  expenses can be added straight away. They are handled exactly the
+  same way. Raw messages never leave your phone. You
+  can stop it at any time by turning off or deleting the automation in
+  the Shortcuts app. **Trackk does not read Apple Pay, Wallet, or
+  banking data on iOS.**
 - **Camera (Android & iOS, optional).** Requested only when you
   tap "Attach receipt" while editing a reimbursement-trip expense
   and choose "Take photo." The captured image is stored as a local
@@ -181,7 +234,9 @@ The rest of this document is the formal version.
   scanned or read. Like camera-captured receipts, the image file
   stays on your device — only the local URI is stored.
 - **Push notifications (Android & iOS, optional).** Used to surface
-  detected transactions, debt-reminder nudges, and budget alerts.
+  detected transactions, debt-reminder nudges, budget alerts, and the
+  monthly reminder to put money aside for your emergency fund (only if
+  you turn it on; it is set on your phone).
   Notification text is generated on-device for SMS-detected
   transactions, and on-server for email-detected transactions
   (when the planned email feature ships). Debt reminders use a
@@ -216,8 +271,7 @@ The rest of this document is the formal version.
   cannot be used to identify your device outside Firebase.
 - **Activity counters.** A lifetime "active days" counter is
   incremented at most once per calendar day when you open the app
-  while signed in. This is used to surface gentle streak metrics
-  in-app and to power the savings-goal carry-forward calculation.
+  while signed in, and kept with your profile.
 - **Sync metadata** — timestamps on records to enable conflict
   resolution between devices.
 - **Activity logs.** Firebase Authentication and Cloud Functions
@@ -230,8 +284,9 @@ The rest of this document is the formal version.
 - Bank account numbers, banking passwords, internet-banking
   credentials, full card numbers, CVVs, or PINs. The Service has no
   ability to log in to your bank.
-- The body content of SMS messages (except transiently, in-memory, for
-  on-device parsing).
+- The text of your messages. Bank messages are read on your phone, and
+  the text of one that became an expense is kept there with it; it is
+  never sent to us.
 - OTPs. If detected, they are discarded.
 - Precise device location, your full contact list (beyond the
   specific entries you choose to select via "Add from contacts" — see
@@ -249,12 +304,12 @@ We use the data described above strictly to:
 
 | Purpose | Examples |
 | --- | --- |
-| Provide core features | Sign-in, syncing your ledger between devices, detecting and showing transactions, computing group balances, generating reports |
-| Personalisation | Default currency, language, theme, suggested categories based on your past tagging |
+| Provide core features | Sign-in, syncing your ledger between devices, detecting and showing transactions, spotting duplicates, computing group balances, working out your emergency fund and reminding you, generating reports |
+| Personalisation | Default currency, language, theme, suggested categories based on your past tagging and on shared shop categories |
 | Service operations & security | Account management, abuse prevention, rate-limiting, fraud detection on sign-in |
 | Communications | Operational emails (sign-in alerts, account-deletion confirmations), in-app messages |
 | Legal compliance | Responding to lawful requests, meeting tax/audit obligations, enforcing the Terms |
-| Product improvement | Aggregated, de-identified analytics (e.g. "X% of users use the goals feature"). We never combine this with personally identifying data for marketing |
+| Product improvement | Aggregated, de-identified analytics (e.g. "X% of users use the emergency fund"). We never combine this with personally identifying data for marketing |
 
 We **do not**:
 
@@ -268,7 +323,7 @@ We **do not**:
 
 ## 3A. Advertising (Planned)
 
-Trackk v1.0 shows **no ads**. A future version (Android and iOS) may
+Trackk currently shows **no ads**. A future version (Android and iOS) may
 display advertising to support the free tier. When that happens:
 
 - **Ads will be served by a third-party ad network** (for example,
@@ -278,8 +333,8 @@ display advertising to support the free tier. When that happens:
   app information, and ad interaction events — under its own privacy
   policy.
 - **We will never use your financial data for advertising.** Your
-  transactions, balances, SMS content, email content, goals, and group
-  data are **never** shared with, or used to target, ads. Per the
+  transactions, balances, SMS content, email content, emergency fund,
+  and group data are **never** shared with, or used to target, ads. Per the
   Google API Services User Data Policy, data obtained from the optional
   email feature will never be used for advertising (see §5.1).
 - **Premium removes ads.** If you subscribe to a paid plan, ads are
@@ -425,8 +480,10 @@ members of every group you belong to so they can pay you back via their
 own UPI app; you can change or remove it at any time in Profile, which
 updates it across your groups. Apart from your display name and (if you
 set one) your UPI ID, they will not see your other groups, your personal
-transactions, your goals, your budget, your contact details (beyond what
-you've shared with them outside the app), or your account information.
+transactions, your emergency fund, your budget, your contact details
+(beyond what you've shared with them outside the app), or your account
+information. A group expense added from a bank message carries the
+one-way codes described in §2.2; nothing can be read back from them.
 
 ### 5.3 Legal disclosures
 
@@ -453,10 +510,11 @@ financial data.
 
 ## 6. Where Your Data Is Stored
 
-- **On your device** — your transaction ledger, settings, and cached
-  data are stored in encrypted application storage (AsyncStorage). On
-  Android, this is sandboxed to the Trackk app; on iOS, it lives in the
-  app's private Data Container.
+- **On your device** — your transaction ledger (with the text of the
+  bank messages behind it), settings, and cached data are stored in the
+  app's private storage (AsyncStorage), protected by your phone's own
+  encryption. On Android, this is sandboxed to the Trackk app; on iOS,
+  it lives in the app's private Data Container.
 - **In the cloud** — when you sign in, personal records are
   automatically synced to your private space in Google Cloud
   Firestore in the **asia-south1 (Mumbai)** region. This enables
@@ -479,17 +537,22 @@ by applicable data-protection law.
 | Category | Retention |
 | --- | --- |
 | Account profile | Until you delete your account |
-| Transactions, groups, goals (active) | Until you delete the record or your account |
+| Expenses, groups, emergency fund (active) | Until you delete the record or your account |
+| Recently deleted | 30 days after you delete an expense, then removed for good (the next time Trackk opens) |
+| Codes of deleted bank messages | Until you delete your account (the newest 3,000 are kept) |
+| Votes for shared shop categories and message templates | Kept in the shared lists. After you delete your account they are linked only to an account ID that no longer exists |
 | Group expenses where you participated | Retained on the group document while the group still exists, even after you leave, but your personal identifiers are removed from your splits |
 | Backups | Up to 30 days after deletion, then permanently purged |
 | Authentication / security logs | Up to 12 months for abuse and fraud prevention |
 | Records required by law (tax, accounting, dispute) | For the period required by applicable law |
 
 When you delete your account from **Profile → Delete Account**,
-your profile, transactions, goals, budgets, subscriptions,
-investments, EMIs, reimbursement trips, FCM device tokens, and
-email-connection records are **permanently deleted from active
-Firestore collections immediately**. Your Firebase Authentication
+your profile, expenses, waiting messages, bank-format answers,
+emergency fund, Recently deleted, codes of deleted messages, budgets,
+reimbursement trips, FCM device tokens, email-connection records, and
+anything left from features that have since been removed (goals,
+subscriptions, investments, EMIs) are **permanently deleted from
+active Firestore collections immediately**. Your Firebase Authentication
 record is also deleted. Backup copies are purged within the
 rolling-backup rotation above (up to 30 days). Group expenses on
 which you participated remain on the group document so the other
@@ -569,9 +632,8 @@ all associated data without delay.
 
 The mobile app does not use browser cookies. It uses standard local
 storage (AsyncStorage / Keychain / Keystore) to remember your sign-in
-state, preferences, and cached data. Our website (if any) may use
-strictly necessary cookies; details are shown in a banner the first
-time you visit.
+state, preferences, and cached data. Our website, trackk2save.com,
+sets no cookies and uses no analytics.
 
 ---
 
@@ -614,7 +676,7 @@ and Gulf markets where the SMS-detection feature works against
 the user's bank-sender ecosystem (e.g. India, UAE, Saudi
 Arabia, Singapore, Malaysia, Sri Lanka, Bangladesh, Nepal,
 Bhutan, and the Maldives). The EEA and the United Kingdom are
-**not** in the v1.0 distribution allowlist. Accordingly, Trackk
+**not** in the current distribution allowlist. Accordingly, Trackk
 is not offered, marketed, or available for download in the EEA
 or the UK as of the effective date of this Policy, and we have
 not appointed an Article 27 representative.
@@ -627,16 +689,12 @@ in Section 9 globally as a matter of policy. We will publish an
 update to this Policy, appoint Article 27 representatives in the
 EU and UK, and (where required) declare a Data Protection
 Officer **before** we expand distribution to any EEA / UK country.
-This is targeted for release v1.1, when email-based transaction
-detection becomes the primary auto-detection path and the
-Service becomes useful to users whose banks do not send
-transactional SMS.
 
 ### California (CCPA / CPRA)
 
 As of the effective date we do **not** sell or share personal
 information for cross-context behavioural advertising, and the United
-States is not in the v1.0 distribution allowlist. If the planned ad
+States is not in the current distribution allowlist. If the planned ad
 feature (§3A) is later enabled in a release distributed to California
 residents and involves "sharing" for cross-context behavioural
 advertising, we will provide a clear **"Do Not Sell or Share My Personal
@@ -656,8 +714,8 @@ data leaves your device.
 
 | Permission | Why we ask | Leaves your device? |
 | --- | --- | --- |
-| `READ_SMS` / `RECEIVE_SMS` (Android, optional) | Detect bank/UPI/card transactions for review | Raw SMS bodies never leave the device. The parsed fields (amount, merchant, timestamp) are synced to your private cloud space when you are signed in |
-| `READ_CONTACTS` (Android, optional) | Pick people to add as group members from your contact list | Only the contact entry **you tap to select** is stored against that group; the rest of your address book is never read into our memory or transmitted |
+| `READ_SMS` / `RECEIVE_SMS` (Android, optional) | Detect bank/UPI/card transactions, as they arrive and, when you ask for the quick scan, from the last 3 months | Raw SMS bodies never leave the device. The parsed fields (amount, merchant, timestamp) and one-way codes used to spot duplicates are synced to your private cloud space when you are signed in |
+| `READ_CONTACTS` (Android) / Contacts (iOS), optional | Pick people to add as group members from your contact list | Only the contact entry **you tap to select** is stored against that group; the rest of your address book stays on your phone and is never transmitted. On iPhone you can also share only chosen contacts, or pick one person with the iPhone's own picker, which needs no permission |
 | `POST_NOTIFICATIONS` (Android) / Notifications (iOS) | Show a tappable card for each detected transaction | No |
 | `RECEIVE_BOOT_COMPLETED`, `VIBRATE`, `WAKE_LOCK` (Android) | Restart the SMS listener after a reboot and deliver notifications reliably | No |
 | `INTERNET` | Authentication, cloud sync, exchange-rate refresh, payment processing | Yes — only for sign-in, sync, exchange-rate refresh, or a payment in flight |
@@ -665,7 +723,7 @@ data leaves your device.
 | FCM device token (Firebase Cloud Messaging) | Deliver push notifications to your device | The token is stored in Firestore against your user ID; it cannot be used to identify your device outside Firebase |
 | Razorpay SDK (Android, when you purchase a subscription) | Process the payment for a paid plan | Card / UPI / bank details go directly to Razorpay; we never see them |
 | `gmail.readonly` or equivalent (planned, optional) | Detect bank emails — only when you connect a mailbox in Profile | The relevant message content is read by our Cloud Functions in `asia-south1`; only parsed amount/merchant/timestamp are persisted |
-| iOS Shortcuts deep-link (planned, iOS only, optional) | Receive transaction data your Shortcut chooses to send | The Shortcut runs entirely on your device; only the fields you forward are stored |
+| "Add from message" Shortcuts action (iOS 27+, optional) | Detect bank/UPI/card transactions from the messages your Messages automation hands to Trackk | Only messages with a rupee amount are kept, on your phone, until parsed; all others are discarded at once. Raw messages never leave the device. The parsed fields (amount, merchant, timestamp) are synced to your private cloud space when you are signed in |
 | `AD_ID` / Advertising ID (planned — only if/when the free-tier ad feature ships) | Let the ad network (e.g. AdMob) serve and measure ads | The Advertising ID and standard ad signals go to the ad network under its policy; **never** your financial data |
 
 We do not request `ACCESS_FINE_LOCATION`, `CAMERA` (other than when you
@@ -675,11 +733,10 @@ other high-risk permissions.
 
 ---
 
-## 14A. Apple-Specific Disclosures (iOS, when available)
+## 14A. Apple-Specific Disclosures (iOS)
 
-The current release of Trackk targets Android. The following
-disclosures will apply once the iOS version is published on the
-Apple App Store:
+The following disclosures apply to the iOS version of Trackk,
+published on the Apple App Store:
 
 - **Sign in with Apple.** Where we offer Google Sign-In, we will
   also offer Sign in with Apple on iOS, in accordance with Apple
@@ -695,9 +752,9 @@ Apple App Store:
   and only enable tracking with your permission; declining means you
   still see non-personalised ads (or none, with Premium). We will update
   this Policy and the App Privacy labels before that change ships.
-- **In-App Purchase.** All paid subscriptions on iOS are processed
-  exclusively via Apple In-App Purchase; Razorpay is not used on
-  iOS. Apple receives transaction data; we receive only the
+- **In-App Purchase.** Trackk has no paid plans on iOS at present.
+  If they come, they will be processed exclusively via Apple In-App
+  Purchase; Razorpay is not used on iOS. Apple receives transaction data; we receive only the
   subscription receipt and entitlement state.
 - **App Privacy "nutrition" labels.** A complete mapping of the
   data categories below to Apple's App Privacy framework is
