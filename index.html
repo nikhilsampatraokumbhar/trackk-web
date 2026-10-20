@@ -3,63 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Trackk — A smarter expense tracker</title>
-  <meta name="description" content="Track personal spending and split expenses with friends. Auto-tracks bank SMS. Built for India.">
+  <title>Trackk: Split bills and settle up</title>
+  <meta name="description" content="Your bank payments add themselves, bills split in a tap, and an emergency fund worked out from what you really spend. Free, built for India.">
+  <link rel="icon" href="/get/icon.png">
   <link rel="stylesheet" href="/style.css">
+  <style>
+    .hero .icon { width: 72px; height: 72px; border-radius: 18px; display: block; margin: 0 auto 20px; }
+    .stores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 26px 0 14px; }
+    .btn.ghost { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+    .btn.soon { background: transparent; color: var(--text-2); border: 1px dashed rgba(255,255,255,0.18); cursor: default; }
+    .btn.soon:hover { opacity: 1; }
+    .features { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card .tag { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase;
+                 color: #0A0E14; background: #34D399; border-radius: 999px; padding: 2px 8px; margin-left: 8px; vertical-align: 2px; }
+    .card .fine { margin-top: 8px; font-size: 12.5px; color: var(--text-3); }
+  </style>
 </head>
 <body>
   <header class="nav">
     <a class="brand" href="/">Trackk</a>
     <nav>
       <a href="#features">Features</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
       <a href="mailto:support@trackk2save.com">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
+      <img class="icon" src="/get/icon.png" alt="" width="72" height="72">
       <h1>Money is hard. Tracking it shouldn't be.</h1>
       <p class="lead">
-        Trackk tracks every bank transaction the moment it happens, splits
-        bills with your friends, and tells you how much you can actually
-        spend today. No banks linked, no statements uploaded — just SMS,
-        processed on your phone.
+        Every bank payment lands in Trackk the moment it happens, and splitting
+        a bill with friends takes one tap. No bank login, no statements to
+        upload: just your bank messages, read on your phone.
       </p>
-      <p class="note">Android first. iOS coming soon.</p>
+      <div class="stores">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.trackk.app">Get it on Google Play</a>
+        <a class="btn ghost" data-store="ios" href="/get?src=site">Download on the App Store</a>
+      </div>
+      <p class="note" data-free>Free on Android and iPhone.</p>
     </section>
 
     <section id="features" class="features">
       <div class="card">
-        <h3>Auto-detect expenses</h3>
-        <p>SMS from your bank → categorised, tagged, ready to review. Parsing happens on your device.</p>
+        <h3>Expenses add themselves</h3>
+        <p>A bank message becomes an expense, in its category, the moment it arrives.</p>
+        <p class="fine">On iPhone, adding by itself needs iOS 27 or later.</p>
       </div>
       <div class="card">
         <h3>Split with anyone</h3>
-        <p>Groups for flats, trips, parents. Settle with a UPI deep-link in two taps.</p>
+        <p>Groups for your flat, trips and family. Everyone sees who paid and who owes.</p>
       </div>
       <div class="card">
-        <h3>Review in seconds</h3>
-        <p>Detected spends queue up in Catch Up. Log or split each one with a tap — or swipe through the lot.</p>
+        <h3>Settle up, nudge kindly</h3>
+        <p>Copy their UPI ID and pay in your own UPI app, or settle in cash. Or send a WhatsApp reminder that's already written.</p>
+      </div>
+      <div class="card">
+        <h3>Emergency fund <span class="tag">New</span></h3>
+        <p>How long your savings would last if your income stopped, worked out from what you really spend. And a monthly nudge to put some aside.</p>
+      </div>
+      <div class="card">
+        <h3>Your messages stay on your phone</h3>
+        <p>Trackk never asks for your bank login. Only the amount, shop and time are saved to your account.</p>
+      </div>
+      <div class="card">
+        <h3>In your language</h3>
+        <p>English, Hindi, Tamil, Telugu, Kannada, Marathi, Bengali and 7 more.</p>
       </div>
     </section>
 
     <section class="cta">
-      <h2>Coming soon</h2>
-      <p>We'll let you know the day Trackk lands on Play Store.</p>
-      <a class="btn" href="mailto:support@trackk2save.com?subject=Notify%20me%20when%20Trackk%20launches">Get notified</a>
+      <h2>Get Trackk</h2>
+      <p data-free>Free on Android and iPhone.</p>
+      <div class="stores">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.trackk.app">Get it on Google Play</a>
+        <a class="btn ghost" data-store="ios" href="/get?src=site">Download on the App Store</a>
+      </div>
     </section>
   </main>
 
   <footer>
     <p>© Trackk Technologies · Krishnagiri, Tamil Nadu, India</p>
     <p>
-      <a href="/privacy">Privacy Policy</a> ·
-      <a href="/terms">Terms of Service</a> ·
-      <a href="/delete-account">Delete your account</a> ·
+      <a href="/privacy/">Privacy Policy</a> ·
+      <a href="/terms/">Terms of Service</a> ·
+      <a href="/delete-account/">Delete your account</a> ·
       <a href="mailto:support@trackk2save.com">support@trackk2save.com</a>
     </p>
   </footer>
+
+  <script src="/stores.js"></script>
+  <script>
+    // The App Store button goes straight to the store once the iPhone app
+    // is out (stores.js). Before that it says so instead of linking.
+    (function () {
+      var s = window.TRACKK_STORES || {};
+      var ios = document.querySelectorAll('[data-store="ios"]');
+      for (var i = 0; i < ios.length; i++) {
+        var b = ios[i];
+        if (s.iosLive && s.appStoreId) {
+          b.href = 'https://apps.apple.com/in/app/id' + s.appStoreId;
+        } else {
+          b.removeAttribute('href');
+          b.setAttribute('aria-disabled', 'true');
+          b.className = 'btn soon';
+          b.textContent = 'iPhone: coming soon';
+        }
+      }
+      if (!s.iosLive) {
+        var free = document.querySelectorAll('[data-free]');
+        for (var j = 0; j < free.length; j++) free[j].textContent = 'Free on Android. iPhone coming soon.';
+      }
+    })();
+  </script>
 </body>
 </html>

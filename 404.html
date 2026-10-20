@@ -21,22 +21,56 @@
     <p class="sub" id="sub">If the app doesn't open, install Trackk — you'll land in the group automatically.</p>
     <a class="btn" id="cta" href="https://trackk2save.com">Go to Trackk</a>
   </div>
+  <script src="/stores.js"></script>
   <script>
+    // GitHub Pages has no server-side rewrites, so path-based links like
+    // https://trackk2save.com/join/CODE have no matching file and Pages
+    // serves THIS 404 page (with a 404 status, but the browser still renders
+    // it and runs this script). When the Trackk app is installed AND Android
+    // App Link verification has completed, tapping the link opens the app
+    // directly and this page is never shown — so reaching here means either
+    // the app isn't installed, this is a desktop browser, or verification is
+    // still propagating. For /join/ links we send the user to the Play Store
+    // and carry the join code via the install referrer (deferred deep link);
+    // for any other unknown path we show a plain "not found".
+    //
+    // iPhone: with Trackk installed, the universal link
+    // (.well-known/apple-app-site-association) opens the app and this page
+    // never shows. Reaching here means it isn't installed. The App Store
+    // carries no join code, so the page says to tap the invite again once
+    // Trackk is in; before the iPhone app is out (stores.js) it says so.
     (function () {
       var m = (location.pathname || '').match(/\/join\/([^\/?#]+)/);
-      var pkg = 'com.trackk.app';
-      if (m) {
+      var s = window.TRACKK_STORES || {};
+      var pkg = s.androidPackage || 'com.trackk.app';
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (m && isIOS) {
+        var appStore = s.iosLive && s.appStoreId ? 'https://apps.apple.com/in/app/id' + s.appStoreId : '';
+        var link = document.getElementById('cta');
+        if (appStore) {
+          document.getElementById('title').textContent = 'Get Trackk to join';
+          document.getElementById('sub').textContent = 'Install Trackk from the App Store, then tap the invite link again to join the group.';
+          link.href = appStore;
+          link.textContent = 'Get Trackk on the App Store';
+        } else {
+          document.getElementById('title').textContent = 'Trackk for iPhone is coming soon';
+          document.getElementById('sub').textContent = 'Keep this invite: once Trackk is on the App Store, install it and tap the link again to join.';
+        }
+      } else if (m) {
         var code = m[1].replace(/[^A-Za-z0-9]/g, '');
         var play = 'https://play.google.com/store/apps/details?id=' + pkg +
           (code ? '&referrer=' + encodeURIComponent('join_' + code) : '');
         var cta = document.getElementById('cta');
         cta.href = play;
         cta.textContent = 'Get Trackk on Google Play';
+        // Best-effort: try the custom scheme first (covers the window where App
+        // Link verification is still propagating), then fall back to the store.
         if (code) { try { window.location.href = 'trackk://join/' + code; } catch (e) {} }
         setTimeout(function () { window.location.href = play; }, 700);
       } else {
         document.getElementById('title').textContent = 'Page not found';
-        document.getElementById('sub').textContent = 'That link doesn\u2019t exist. Head back to Trackk.';
+        document.getElementById('sub').textContent = 'That link doesn’t exist. Head back to Trackk.';
       }
     })();
   </script>

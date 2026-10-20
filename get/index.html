@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Get Trackk</title>
+  <meta name="description" content="Split bills with friends. Your UPI spends add themselves. Free on iPhone and Android.">
+  <style>
+    :root { --bg:#0A0E14; --card:#121823; --text:#ECEFF3; --text-2:#A0A8B3; --blue:#5B96F7; --border:rgba(255,255,255,0.09); }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+           background: var(--bg); color: var(--text); margin: 0;
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+    .wrap { width: 100%; max-width: 380px; text-align: center; }
+    .icon { width: 72px; height: 72px; border-radius: 18px; display: block; margin: 0 auto 16px; }
+    h1 { font-size: 26px; line-height: 1.2; margin: 0; letter-spacing: -0.4px; }
+    p.lead { color: var(--text-2); font-size: 15px; line-height: 1.45; margin: 10px 0 0; }
+    .btns { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+    a.btn { display: block; padding: 14px 18px; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 15px;
+            background: var(--card); color: var(--text); border: 1px solid var(--border); }
+    a.btn.main { background: var(--blue); color: #fff; border-color: var(--blue); }
+    p.soon { color: var(--text-2); font-size: 14px; line-height: 1.45; margin: 18px 0 0; }
+    p.small { color: #5C6675; font-size: 12px; margin-top: 22px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="icon" src="/get/icon.png" alt="" width="72" height="72" />
+    <h1>Get Trackk</h1>
+    <p class="lead">Split bills with friends.<br />Your UPI spends add themselves.</p>
+    <div class="btns">
+      <a class="btn" id="ios" href="#" hidden>Download on the App Store</a>
+      <a class="btn" id="android" href="#">Get it on Google Play</a>
+    </div>
+    <p class="soon" id="soon" hidden>Trackk for iPhone is coming soon.</p>
+    <p class="small"><span id="free">Free · iPhone and Android</span> · <a href="/" style="color:inherit">trackk2save.com</a></p>
+  </main>
+  <script src="/stores.js"></script>
+  <script>
+    // One QR for everyone: trackk2save.com/get?src=<where it was scanned>.
+    // A phone goes straight to its own store; anything else sees both.
+    // `src` names the place (church-st, card, table-cafe-x) and travels to
+    // the store, so Play Console and App Store Connect can say which places
+    // brought installs.
+    (function () {
+      // The store details live in /stores.js, shared with the home page and
+      // the /join fallback. Until iosLive is set there, iPhones are told the
+      // app is coming instead of being sent to an empty App Store page.
+      var S = window.TRACKK_STORES || {};
+      var APP_STORE_ID = S.iosLive ? (S.appStoreId || '') : '';
+      var APP_STORE_PT = S.appStorePt || '';
+      var PKG = S.androidPackage || 'com.trackk.app';
+
+      var match = /[?&]src=([^&#]*)/.exec(location.search);
+      var src = (match ? decodeURIComponent(match[1]) : 'direct').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) || 'direct';
+
+      var play = 'https://play.google.com/store/apps/details?id=' + PKG +
+        '&referrer=' + encodeURIComponent('utm_source=' + src + '&utm_medium=qr&utm_campaign=offline');
+      var appStore = APP_STORE_ID
+        ? 'https://apps.apple.com/in/app/id' + APP_STORE_ID + (APP_STORE_PT ? '?pt=' + APP_STORE_PT + '&ct=' + src + '&mt=8' : '')
+        : '';
+
+      var ua = navigator.userAgent || '';
+      // iPadOS says it is a Mac; a touch screen gives it away.
+      var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var isAndroid = /Android/i.test(ua);
+
+      var ios = document.getElementById('ios');
+      var android = document.getElementById('android');
+      android.href = play;
+      if (appStore) { ios.href = appStore; ios.hidden = false; }
+      else document.getElementById('free').textContent = 'Free on Android · iPhone soon';
+
+      if (isIOS) {
+        android.hidden = true;
+        if (appStore) { ios.className = 'btn main'; setTimeout(function () { location.href = appStore; }, 300); }
+        else document.getElementById('soon').hidden = false;
+      } else if (isAndroid) {
+        ios.hidden = true;
+        android.className = 'btn main';
+        setTimeout(function () { location.href = play; }, 300);
+      } else if (!appStore) {
+        document.getElementById('soon').hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

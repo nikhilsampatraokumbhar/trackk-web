@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["LBZ286N6Z7.com.trackk.app"],
+        "components": [
+          { "/": "/join/*", "comment": "Group invite links open Trackk on iPhone" }
+        ]
+      }
+    ]
+  }
+}
